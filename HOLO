@@ -13,7 +13,7 @@ def calcTaint(arr):
     
     if len(arr) == 0:
         return;
-    elif len(arr) > 2:
+    if len(arr) > 2:
         top_bott_taint = (taint * .7)/2
         taintArr.append(top_bott_taint)
         leftover = (taint * 0.3) / (len(arr) - 2)
