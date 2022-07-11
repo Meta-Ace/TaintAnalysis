@@ -1,18 +1,31 @@
-inputs_am = [5,7,8, 5, 7, 5, 3, 4, 10, 23, 47]
+inputs_am = [5, 19, 30]
+inp = ["a","b", "c"]
+out = ["d"]
 
 def orderInputs(inputs):
     inputs.sort(reverse=True)
-    print(inputs)
     return inputs;
 
-def calcTaint(arr):
+def prevTaint(prevArr, i):
+    prev = prevArr[i]
+    return prev;
+
+def calcTaint(arr, taint):
     
-    taint = 100
     taintArr = []
     top_bott_taint = 0
     
     if len(arr) == 0:
         return;
+    
+    if len(arr) == 1:
+        taintArr = [100]
+        return
+    
+    if len(arr) == 2:
+        taintArr = [50,50]
+        return;
+    
     if len(arr) > 2:
         top_bott_taint = (taint * .7)/2
         taintArr.append(top_bott_taint)
@@ -22,6 +35,19 @@ def calcTaint(arr):
         taintArr.append(top_bott_taint)
         print(taintArr)
         
-    return;
+    return taintArr;
 
-calcTaint(orderInputs(inputs_am))
+#global variables
+taint = 100
+i = 0
+j = 0
+inputs = orderInputs(inputs_am)
+
+# tester method when inputs are 3 or higher, otherwise use base cases 
+# wip - handle multiple flows
+
+#driver/tester
+while j < len(inp):
+    print(inputs)
+    taint = prevTaint(calcTaint(inputs, taint), 0)
+    j += 1
