@@ -1,4 +1,4 @@
-inputs_am = [5, 19, 30]
+inputs_am = [5, 19, 30, 31]
 inp = ["a","b", "c"]
 out = ["d"]
 
@@ -16,14 +16,17 @@ def calcTaint(arr, taint):
     top_bott_taint = 0
     
     if len(arr) == 0:
+        print("Invalid Array")
         return;
     
     if len(arr) == 1:
         taintArr = [100]
+        print(taintArr)
         return
     
     if len(arr) == 2:
         taintArr = [50,50]
+        print(taintArr)
         return;
     
     if len(arr) > 2:
@@ -47,7 +50,10 @@ inputs = orderInputs(inputs_am)
 # wip - handle multiple flows
 
 #driver/tester
-while j < len(inp):
-    print(inputs)
-    taint = prevTaint(calcTaint(inputs, taint), 0)
-    j += 1
+if len(inputs_am) < 3:
+    calcTaint(inputs,100)
+elif len(inputs_am) >= 3:
+    while j < len(inp):
+        print(inputs)
+        taint = prevTaint(calcTaint(inputs, taint), 0)
+        j += 1
