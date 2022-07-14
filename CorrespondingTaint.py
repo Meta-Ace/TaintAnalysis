@@ -48,7 +48,7 @@ def addCorrTaint(Addrs, taintArr):
             elif canAdd[i] == 0:
                 totTaint.append(taintArr[i])
                 i+=1
-        
+    # if statement to handle eol    
     if i == len(canAdd) - 1:
         if canAdd[i] == 0:
             totTaint.append(taintArr[i])
