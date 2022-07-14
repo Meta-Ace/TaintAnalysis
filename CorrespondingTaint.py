@@ -28,7 +28,7 @@ def sameAdd(arrAddr):
             i+=1
     print(canAdd)
 
-         
+# todo, unordered list of addresses         
 def addCorrTaint(Addrs, taintArr):
     totTaint = []
     i = 0
