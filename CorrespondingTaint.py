@@ -1,6 +1,6 @@
 inputs_am = [5, 19, 30, 31, 45, 56]
 inp = ["a","b", "c","y","z", "aa"]
-out = ["e", "e", "e", "e", "d"]
+out = ["e", "e", "d", "e", "e"]
 canAdd = []
 taintArr = [4, 5, 10, 10, 10]
 
@@ -13,8 +13,23 @@ def sumOf(arr):
         i+=1
     return num
 
-#function to find any pairs
-def sameAddr(arrAddr):
+#function to find any pairs // unfinished
+def sameAddr(arrAddr, taintArr):
+    i = 0
+    # base item
+    j = 0
+    totTaint = []
+    usedArrs = []
+    a = 0
+    # iterate through every item in the list
+    while i < len(arrAddr):
+        if j == i:
+            j+=1
+            a += j
+        if arrAddr[i] == arrAddr[j]:
+            a += taintArr[i]
+            
+            
     return
     
 
@@ -33,7 +48,7 @@ def sameAdd(arrAddr):
             i+=1
     print(canAdd)
 
-#TODO - handle unordered lists        
+#handle unordered lists        
 def addCorrTaint(Addrs, taintArr):
     totTaint = []
     i = 0
