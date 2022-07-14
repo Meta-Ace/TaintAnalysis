@@ -1,8 +1,8 @@
 inputs_am = [5, 19, 30, 31, 45, 56]
 inp = ["a","b", "c","y","z", "aa"]
-out = ["d", "d", "e", "e"]
+out = ["e", "e", "e", "e", "d"]
 canAdd = []
-taintArr = [4, 5, 10, 10]
+taintArr = [4, 5, 10, 10, 10]
 
 
 def sumOf(arr):
@@ -12,6 +12,11 @@ def sumOf(arr):
         num += arr[i-1]
         i+=1
     return num
+
+#function to find any pairs
+def sameAddr(arrAddr):
+    return
+    
 
 #check if neighboring addresses are the same
 def sameAdd(arrAddr):
@@ -28,7 +33,7 @@ def sameAdd(arrAddr):
             i+=1
     print(canAdd)
 
-# todo, unordered list of addresses         
+#handle unordered lists        
 def addCorrTaint(Addrs, taintArr):
     totTaint = []
     i = 0
@@ -48,13 +53,19 @@ def addCorrTaint(Addrs, taintArr):
             elif canAdd[i] == 0:
                 totTaint.append(taintArr[i])
                 i+=1
-    # if statement to handle eol    
+    if len(totTaint) == 0:
+        totTaint.append(a)
+    
     if i == len(canAdd) - 1:
         if canAdd[i] == 0:
             totTaint.append(taintArr[i])
         elif canAdd[i] == 1:
-            a = totTaint[len(totTaint) - 1] + taintArr[i + 1]
-            totTaint[len(totTaint) - 1] = a
+            if len(totTaint) == 0:
+                a = taintArr[i + 1]
+                totTaint[0] = a
+            elif len(totTaint) != 0:
+                a = totTaint[len(totTaint) - 1] + taintArr[i + 1]
+                totTaint[len(totTaint) - 1] = a
     return totTaint;
                         
 
