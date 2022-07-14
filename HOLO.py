@@ -55,5 +55,5 @@ if len(inputs_am) < 3:
 elif len(inputs_am) >= 3:
     while j < len(inp):
         print(inputs)
-        taint = prevTaint(calcTaint(inputs, taint), 0)
+        prevTaint(calcTaint(inputs, taint), 0)
         j += 1
