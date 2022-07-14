@@ -33,7 +33,7 @@ def sameAdd(arrAddr):
             i+=1
     print(canAdd)
 
-#handle unordered lists        
+#TODO - handle unordered lists        
 def addCorrTaint(Addrs, taintArr):
     totTaint = []
     i = 0
@@ -46,6 +46,7 @@ def addCorrTaint(Addrs, taintArr):
             totTaint.append(a)
             i+=1
             a = taintArr[i]
+            totTaint.append(a)
             if canAdd[i] == 1:
                 a += taintArr[i+1]
                 totTaint.append(a)
